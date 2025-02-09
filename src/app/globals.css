@@ -2,20 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  :root { 
+    --background: 0 0% 98%; /* Soft white */
+    --foreground: 222.2 84% 5%; /* Deep gray for readability */
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 222.2 84% 5%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 5%;
+
+    --primary: 221.2 83.2% 55%; /* Electric Blue */
+    --primary-foreground: 210 40% 98%; /* Near white text on primary */
+
+    --secondary: 210 40% 96.1%; /* Light gray */
+    --secondary-foreground: 222.2 47.4% 15%; /* Darker text */
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 42%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 15%;
+
+    --destructive: 0 84.2% 55%; /* Strong red */
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 90%;
+    --input: 214.3 31.8% 90%;
+    --ring: 221.2 83.2% 55%; /* Electric Blue border focus */
+
+    --radius: 0.75rem;
+
+    --chart-1: 12 76% 58%; /* Orange */
+    --chart-2: 173 58% 40%; /* Green */
+    --chart-3: 197 37% 26%; /* Deep Blue */
+    --chart-4: 43 74% 65%; /* Yellow */
+    --chart-5: 27 87% 66%; /* Warm Orange */
+  }
+
+  .dark {
+    --background: 222.2 84% 6%; /* Deep gray, near black */
+    --foreground: 210 40% 98%; /* Light gray text */
+    --card: 222.2 84% 6%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 6%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 221.2 83.2% 60%; /* Electric Blue in dark mode */
+    --primary-foreground: 222.2 47.4% 15%;
+
+    --secondary: 217.2 32.6% 20%; /* Darker gray */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 20%;
+    --muted-foreground: 215 20.2% 65%;
+
+    --accent: 217.2 32.6% 20%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 40%; /* Deep red */
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 20%;
+    --input: 217.2 32.6% 20%;
+    --ring: 221.2 83.2% 60%; /* Electric Blue border focus */
+
+    --chart-1: 220 70% 55%; /* Blue */
+    --chart-2: 160 60% 45%; /* Green */
+    --chart-3: 30 80% 55%; /* Orange */
+    --chart-4: 280 65% 60%; /* Purple */
+    --chart-5: 340 75% 55%; /* Pink */
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
