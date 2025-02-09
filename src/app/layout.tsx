@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar";
 import Providers from "@/lib/Providers";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/utils/authOptions";
 
 const roboto = Roboto({
   weight: "400",
@@ -16,11 +18,12 @@ export const metadata: Metadata = {
   description: "Welcome to sadikVerse",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession(authOptions);
   return (
     <Providers>
       <html lang="en">
@@ -31,7 +34,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Navbar></Navbar>
+            <Navbar session={session}></Navbar>
             {children}
           </ThemeProvider>
         </body>

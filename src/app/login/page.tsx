@@ -5,8 +5,9 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { ModeToggle } from "@/components/mode-toggle";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
+import { SiGithub, SiGoogle } from "react-icons/si";
 
 export type FormValues = {
   email: string;
@@ -32,7 +33,6 @@ const LoginPage = () => {
             <CardTitle className="text-2xl font-bold text-primary">
               Login to Your Account
             </CardTitle>
-            <ModeToggle /> {/* Add dark/light mode toggle */}
           </div>
         </CardHeader>
 
@@ -104,7 +104,7 @@ const LoginPage = () => {
 
             {/* Signup Link */}
             <p className="text-sm text-center text-muted-foreground">
-              Don`t have an account?
+              Don`t have an account?{" "}
               <Link
                 href="/register"
                 className="text-primary hover:underline font-medium"
@@ -113,6 +113,40 @@ const LoginPage = () => {
               </Link>
             </p>
           </form>
+
+          {/* Social Login */}
+          <div className="mt-6">
+            <p className="text-sm text-center text-muted-foreground mb-4">
+              Or continue with
+            </p>
+            <div className="flex justify-center space-x-4">
+              {/* GitHub Login Button */}
+              <Button
+                variant="outline"
+                className="w-12 h-12 p-0 rounded-full"
+                onClick={() =>
+                  signIn("github", {
+                    callbackUrl: "http://localhost:3000",
+                  })
+                }
+              >
+                <SiGithub className="w-6 h-6" />
+              </Button>
+
+              {/* Google Login Button */}
+              <Button
+                variant="outline"
+                className="w-12 h-12 p-0 rounded-full"
+                onClick={() =>
+                  signIn("google", {
+                    callbackUrl: "http://localhost:3000",
+                  })
+                }
+              >
+                <SiGoogle className="w-6 h-6 text-red-500" />
+              </Button>
+            </div>
+          </div>
         </CardContent>
       </Card>
     </div>

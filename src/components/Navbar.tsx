@@ -3,8 +3,18 @@
 import Link from "next/link";
 import { ModeToggle } from "./mode-toggle";
 import { useState } from "react";
+import { Button } from "./ui/button";
+import { signOut } from "next-auth/react";
 
-const Navbar = () => {
+type UserProps = {
+  user?: {
+    name: string | undefined;
+    email: string | undefined;
+    image: string | undefined;
+  };
+};
+
+const Navbar = ({ session }: { session: UserProps }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -36,16 +46,25 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Right Side: Mode Toggle and Login Button */}
+        {/* Right Side: Mode Toggle and Login/Logout Button */}
         <div className="flex items-center space-x-4">
           <ModeToggle />
 
-          <Link
-            href="/login"
-            className="hidden sm:inline-block px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition duration-300"
-          >
-            Login
-          </Link>
+          {session?.user ? (
+            <Button
+              onClick={() => signOut()}
+              className="hidden sm:inline-block px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 transition duration-300"
+            >
+              LogOut
+            </Button>
+          ) : (
+            <Link
+              href="/login"
+              className="hidden sm:inline-block px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition duration-300"
+            >
+              Login
+            </Link>
+          )}
 
           {/* Mobile Menu Toggle Button */}
           <button
@@ -72,13 +91,22 @@ const Navbar = () => {
                 </li>
               ))}
               <li>
-                <Link
-                  href="/login"
-                  className="block px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition duration-300"
-                  onClick={toggleMobileMenu}
-                >
-                  Login
-                </Link>
+                {session?.user ? (
+                  <Button
+                    onClick={() => signOut()}
+                    className="block px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 transition duration-300"
+                  >
+                    LogOut
+                  </Button>
+                ) : (
+                  <Link
+                    href="/login"
+                    className="block px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition duration-300"
+                    onClick={toggleMobileMenu}
+                  >
+                    Login
+                  </Link>
+                )}
               </li>
             </ul>
           </div>

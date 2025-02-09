@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { ModeToggle } from "@/components/mode-toggle";
 import Link from "next/link";
 
 export type UserData = {
@@ -33,7 +32,6 @@ const RegisterPage = () => {
             <CardTitle className="text-2xl font-bold text-primary">
               Create an Account
             </CardTitle>
-            <ModeToggle /> {/* Add dark/light mode toggle */}
           </div>
         </CardHeader>
 
