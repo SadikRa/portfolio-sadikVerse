@@ -8,14 +8,20 @@ import { Label } from "@/components/ui/label";
 import { ModeToggle } from "@/components/mode-toggle";
 import Link from "next/link";
 
+export type UserData = {
+  name: string;
+  email: string;
+  password: string;
+};
+
 const RegisterPage = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<UserData>();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: UserData) => {
     console.log("User Data:", data);
   };
 
@@ -48,7 +54,7 @@ const RegisterPage = () => {
                 placeholder="Enter your name"
                 className="mt-1"
               />
-              {errors.name && (
+              {typeof errors.name?.message === "string" && (
                 <p className="text-red-500 text-sm mt-1">
                   {errors.name.message}
                 </p>
@@ -76,7 +82,7 @@ const RegisterPage = () => {
                 placeholder="Enter your email"
                 className="mt-1"
               />
-              {errors.email && (
+              {typeof errors.email?.message === "string" && (
                 <p className="text-red-500 text-sm mt-1">
                   {errors.email.message}
                 </p>
@@ -104,7 +110,7 @@ const RegisterPage = () => {
                 placeholder="Enter your password"
                 className="mt-1"
               />
-              {errors.password && (
+              {typeof errors.password?.message === "string" && (
                 <p className="text-red-500 text-sm mt-1">
                   {errors.password.message}
                 </p>
