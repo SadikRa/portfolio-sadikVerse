@@ -12,7 +12,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <div className="w-full h-80 overflow-hidden rounded-lg border border-gray-300 dark:border-gray-700 relative">
         <div className="h-full w-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 dark:scrollbar-thumb-gray-600 dark:scrollbar-track-gray-800">
           <Image
-            src="https://i.ibb.co.com/mrVXz2Th/logo.png"
+            src="https://i.ibb.co.com/N4TXggZ/manga-Verse-1.png"
             alt="Project Screenshot"
             width={800}
             height={400}

@@ -7,6 +7,7 @@ import Providers from "@/lib/Providers";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/utils/authOptions";
 import { Toaster } from "sonner";
+import Footer from "@/components/Footer";
 
 const roboto = Roboto({
   weight: "400",
@@ -29,18 +30,19 @@ export default async function RootLayout({
     <Providers>
       <html lang="en">
         <body className={roboto.className}>
-         <div className="max-w-7xl mx-auto">
-         <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Navbar session={session}></Navbar>
-            {children}
-            <Toaster />
-          </ThemeProvider>
-         </div>
+          <div className="max-w-7xl mx-auto">
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Navbar session={session}></Navbar>
+              <div className="min-h-screen">{children}</div>
+              <Footer />
+              <Toaster />
+            </ThemeProvider>
+          </div>
         </body>
       </html>
     </Providers>

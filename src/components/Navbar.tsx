@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 "use client";
 
 import Link from "next/link";
@@ -42,16 +43,26 @@ const Navbar = ({ session }: { session: UserProps }) => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6 text-foreground font-medium">
-          {["Home", "About", "Projects", "Contact", "Blog"].map((item) => (
-            <li key={item}>
-              <a
-                href={`#${item.toLowerCase()}`}
-                className="hover:text-primary transition duration-300"
-              >
-                {item}
-              </a>
-            </li>
-          ))}
+          <li>
+            <Link href="/" className="hover:text-[#2563EB] transition">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link href="/project" className="hover:text-[#2563EB] transition">
+              Projects
+            </Link>
+          </li>
+          <li>
+            <Link href="/blogs" className="hover:text-[#2563EB] transition">
+              Blog
+            </Link>
+          </li>
+          <li>
+            <Link href="/contact" className="hover:text-[#2563EB] transition">
+              Contact
+            </Link>
+          </li>
         </ul>
 
         {/* Right Side: Mode Toggle and Login/Logout Button */}
@@ -87,17 +98,32 @@ const Navbar = ({ session }: { session: UserProps }) => {
         {isMobileMenuOpen && (
           <div className="md:hidden absolute top-16 left-0 w-full bg-background/95 backdrop-blur-lg border-b border-border shadow-md">
             <ul className="flex flex-col space-y-4 p-6 text-foreground font-medium">
-              {["Home", "About", "Projects", "Contact", "Blog"].map((item) => (
-                <li key={item}>
-                  <a
-                    href={`#${item.toLowerCase()}`}
-                    className="block hover:text-primary transition duration-300"
-                    onClick={toggleMobileMenu}
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link href="/" className="hover:text-[#2563EB] transition">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/project"
+                  className="hover:text-[#2563EB] transition"
+                >
+                  Projects
+                </Link>
+              </li>
+              <li>
+                <Link href="/blogs" className="hover:text-[#2563EB] transition">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="hover:text-[#2563EB] transition"
+                >
+                  Contact
+                </Link>
+              </li>
               <li>
                 {session?.user ? (
                   <Button
