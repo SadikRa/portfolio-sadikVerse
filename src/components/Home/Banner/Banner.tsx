@@ -36,7 +36,7 @@ const Banner = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.5 }}
-          className="text-2xl text-gray-600 dark:text-white sm:text-3xl lg:text-4xl font-medium text-secondary mt-2"
+          className="text-2xl text-gray-600 dark:text-white sm:text-3xl lg:text-4xl font-medium  mt-2"
         >
           {words[index]}
         </motion.h2>

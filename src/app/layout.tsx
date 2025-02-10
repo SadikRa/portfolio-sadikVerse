@@ -29,7 +29,8 @@ export default async function RootLayout({
     <Providers>
       <html lang="en">
         <body className={roboto.className}>
-          <ThemeProvider
+         <div className="max-w-7xl mx-auto">
+         <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
@@ -39,6 +40,7 @@ export default async function RootLayout({
             {children}
             <Toaster />
           </ThemeProvider>
+         </div>
         </body>
       </html>
     </Providers>
