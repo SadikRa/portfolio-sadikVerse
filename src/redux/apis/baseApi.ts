@@ -53,7 +53,6 @@ const baseQueryWithRefreshToken: BaseQueryFn<
         })
       );
 
-      // Retry the original request with the new token
       result = await baseQuery(args, api, extraOptions);
     } else {
       console.log("Refresh token failed, logging out...");
@@ -67,6 +66,6 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: baseQueryWithRefreshToken,
-  tagTypes: ["product", "user", "order", "payment"],
+  tagTypes: ["blog", "user", "project"],
   endpoints: () => ({}),
 });

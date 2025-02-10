@@ -6,7 +6,6 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import profileImage from "../../../../public/profile.jpg";
 
-// Rotating Text Words
 const words = ["Full Stack Developer", "React & Next.js Expert", "MERN Stack"];
 
 const Banner = () => {
@@ -21,7 +20,6 @@ const Banner = () => {
 
   return (
     <div className="relative flex flex-col md:flex-row items-center justify-center min-h-[90vh] px-4 sm:px-6 lg:px-8 bg-background text-foreground">
-      {/* Text Content */}
       <motion.div
         initial={{ x: -50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
@@ -54,7 +52,6 @@ const Banner = () => {
         </button>
       </motion.div>
 
-      {/* Profile Image */}
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
