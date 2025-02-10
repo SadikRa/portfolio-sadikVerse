@@ -5,6 +5,7 @@ import { ModeToggle } from "./mode-toggle";
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { signOut } from "next-auth/react";
+// import { useAppSelector } from "@/redux/hook";
 
 type UserProps = {
   user?: {
@@ -16,6 +17,13 @@ type UserProps = {
 
 const Navbar = ({ session }: { session: UserProps }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // const dispatch = useAppDispatch();
+  // const user = useAppSelector(selectCurrentUser);
+
+  // const handleLogout = () => {
+  //   dispatch(logout());
+  // };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);

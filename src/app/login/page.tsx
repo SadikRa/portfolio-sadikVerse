@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useForm } from "react-hook-form";
@@ -8,6 +9,12 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { SiGithub, SiGoogle } from "react-icons/si";
+import { useLoginMutation } from "@/redux/features/User/userApi";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { verifyToken } from "@/utils/verifyToken";
+import { useAppDispatch } from "@/redux/hook";
+import { setUser, TUser } from "@/redux/features/User/userSlice";
 
 export type FormValues = {
   email: string;
@@ -15,14 +22,33 @@ export type FormValues = {
 };
 
 const LoginPage = () => {
+  const [login] = useLoginMutation();
+  const router = useRouter();
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
 
-  const onSubmit = (data: FormValues) => {
-    console.log("Login Data:", data);
+  const onSubmit = async (data: FormValues) => {
+    const toastId = toast.loading("Logging in");
+
+    try {
+      const userInfo = {
+        email: data.email,
+        password: data.password,
+      };
+
+      const res = await login(userInfo).unwrap();
+
+      const user = verifyToken(res.data.accessToken) as TUser;
+      dispatch(setUser({ user: user, token: res.data.accessToken }));
+      router.push("/");
+      toast.success("Logged in successfully", { id: toastId });
+    } catch (error) {
+      toast.error("Failed to login", { id: toastId });
+    }
   };
 
   return (
