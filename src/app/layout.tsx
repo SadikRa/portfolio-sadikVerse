@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Providers from "@/lib/Providers";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/utils/authOptions";
+import { Toaster } from "sonner";
 
 const roboto = Roboto({
   weight: "400",
@@ -36,6 +37,7 @@ export default async function RootLayout({
           >
             <Navbar session={session}></Navbar>
             {children}
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>

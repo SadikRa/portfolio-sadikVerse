@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useForm } from "react-hook-form";
@@ -6,22 +7,39 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import { useCreateUserMutation } from "@/redux/features/User/userApi";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export type UserData = {
   name: string;
   email: string;
+  image: string;
   password: string;
 };
 
 const RegisterPage = () => {
+  const [createUser, { isLoading }] = useCreateUserMutation();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<UserData>();
 
-  const onSubmit = (data: UserData) => {
-    console.log("User Data:", data);
+  const onSubmit = async (data: UserData) => {
+    try {
+      const res = await createUser(data).unwrap();
+
+      if (res?.success) {
+        toast.success("User created successfully!");
+      } else {
+        toast.error(res?.message || "Something went wrong!");
+        router.push("/login");
+      }
+    } catch (error: any) {
+      toast.error(error?.data?.message || "Failed to create user");
+    }
   };
 
   return (
@@ -83,6 +101,27 @@ const RegisterPage = () => {
               {typeof errors.email?.message === "string" && (
                 <p className="text-red-500 text-sm mt-1">
                   {errors.email.message}
+                </p>
+              )}
+            </div>
+
+            {/* Image Upload Field */}
+            <div>
+              <Label
+                htmlFor="image"
+                className="text-sm font-medium text-primary"
+              >
+                Profile Picture
+              </Label>
+              <Input
+                {...register("image", { required: "Image is required" })}
+                type="text"
+                id="image"
+                placeholder="give your image link"
+              />
+              {errors.image?.message && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.image.message}
                 </p>
               )}
             </div>
