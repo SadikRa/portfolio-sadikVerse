@@ -63,6 +63,11 @@ const Navbar = ({ session }: { session: UserProps }) => {
               Contact
             </Link>
           </li>
+          <li>
+            <Link href="/dashboard" className="hover:text-[#2563EB] transition">
+              Dashboard
+            </Link>
+          </li>
         </ul>
 
         {/* Right Side: Mode Toggle and Login/Logout Button */}
@@ -122,6 +127,14 @@ const Navbar = ({ session }: { session: UserProps }) => {
                   className="hover:text-[#2563EB] transition"
                 >
                   Contact
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/dashboard"
+                  className="hover:text-[#2563EB] transition"
+                >
+                  Dashboard
                 </Link>
               </li>
               <li>
