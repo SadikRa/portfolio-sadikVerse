@@ -20,7 +20,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="relative flex flex-col md:flex-row items-center justify-between min-h-[80vh] px-4 sm:px-6 lg:px-8 bg-background text-foreground">
+    <div className="relative flex flex-col md:flex-row items-center justify-between min-h-[90vh] px-4 sm:px-6 lg:px-8 bg-background text-foreground">
       <motion.div
         initial={{ x: -50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}

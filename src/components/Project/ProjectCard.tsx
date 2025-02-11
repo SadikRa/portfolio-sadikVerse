@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { TProject } from "@/types";
+import Link from "next/link";
 
 interface ProjectCardProps {
   project: TProject;
@@ -7,7 +8,7 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden p-5 transition-transform transform hover:scale-[1.03] duration-300">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden p-5 transition-transform transform hover:scale-[1.01] duration-300 flex flex-col h-full">
       {/* Scrollable Project Thumbnail */}
       <div className="w-full h-80 overflow-hidden rounded-lg border border-gray-300 dark:border-gray-700 relative">
         <div className="h-full w-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 dark:scrollbar-thumb-gray-600 dark:scrollbar-track-gray-800">
@@ -27,7 +28,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       </h2>
 
       {/* Project Description */}
-      <p className="text-gray-600 dark:text-gray-300 mt-2">
+      <p className="text-gray-600 dark:text-gray-300 mt-2 flex-grow">
         {project.description.length > 150
           ? project.description.substring(0, 150) + "..."
           : project.description}
@@ -45,17 +46,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         ))}
       </div>
 
-      {/* Live Preview Button */}
-      {project.liveLink && (
-        <a
-          href={project.liveLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 inline-block px-5 py-2 text-sm font-semibold bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300 shadow-md"
-        >
-          Live Preview
-        </a>
-      )}
+      {/* Buttons: Live Preview & Details */}
+      <div className="mt-4 flex justify-between items-center">
+        {project.liveLink && (
+          <a
+            href={project.liveLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-5 py-2 text-sm font-semibold bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300 shadow-md"
+          >
+            Live Preview
+          </a>
+        )}
+        <Link href={`/project/${project?._id}`}>
+          <button className="px-5 py-2 text-sm font-semibold bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300 shadow-md">
+            Details
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };

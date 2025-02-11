@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-
 import Providers from "@/lib/Providers";
-
 import { Toaster } from "sonner";
 
 const roboto = Roboto({
@@ -14,32 +12,32 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "sadikVerse",
-  description: "Welcome to sadikVerse",
+  title: "SadikVerse",
+  description: "Welcome to SadikVerse",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <Providers>
-      <html lang="en">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <body className={roboto.className}>
+    <html lang="en">
+      <body className={`${roboto.className} bg-gray-50 dark:bg-gray-900`}>
+        <Providers>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
             <div className="max-w-7xl mx-auto">
               {children}
               <Toaster />
             </div>
-          </body>
-        </ThemeProvider>
-      </html>
-    </Providers>
+          </ThemeProvider>
+        </Providers>
+      </body>
+    </html>
   );
 }

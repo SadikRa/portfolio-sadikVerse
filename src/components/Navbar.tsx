@@ -10,13 +10,12 @@ import { signOut } from "next-auth/react";
 
 type UserProps = {
   user?: {
-    name: string | undefined;
-    email: string | undefined;
-    image: string | undefined;
+    name?: string | null | undefined;
+    email?: string | null | undefined;
+    image?: string | null | undefined;
   };
 };
-
-const Navbar = ({ session }: { session: UserProps }) => {
+const Navbar = ({ session }: { session: UserProps | null }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // const dispatch = useAppDispatch();
