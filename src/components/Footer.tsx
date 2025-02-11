@@ -87,7 +87,6 @@ const Footer = () => {
             <FaInstagram className="text-black dark:text-white text-2xl md:text-3xl" />
           </a>
         </div>
-        
       </div>
 
       {/* Bottom Section */}
