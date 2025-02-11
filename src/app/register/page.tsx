@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useCreateUserMutation } from "@/redux/features/User/userApi";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export type UserData = {
   name: string;
@@ -51,6 +52,9 @@ const RegisterPage = () => {
             <CardTitle className="text-2xl font-bold text-primary">
               Create an Account
             </CardTitle>
+            <div>
+              <ModeToggle />
+            </div>
           </div>
         </CardHeader>
 

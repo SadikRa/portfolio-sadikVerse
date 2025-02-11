@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 import { verifyToken } from "@/utils/verifyToken";
 import { useAppDispatch } from "@/redux/hook";
 import { setUser, TUser } from "@/redux/features/User/userSlice";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export type FormValues = {
   email: string;
@@ -59,6 +60,9 @@ const LoginPage = () => {
             <CardTitle className="text-2xl font-bold text-primary">
               Login to Your Account
             </CardTitle>
+            <div>
+              <ModeToggle />
+            </div>
           </div>
         </CardHeader>
 

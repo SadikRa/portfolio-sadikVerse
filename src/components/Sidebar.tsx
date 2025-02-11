@@ -6,7 +6,6 @@ import {
   FaProjectDiagram,
   FaNewspaper,
   FaPlus,
-  
   FaBars,
   FaTimes,
   FaChevronDown,
@@ -74,13 +73,13 @@ const Sidebar = () => {
             {isProjectOpen && isOpen && (
               <div className="pl-6 mt-2 space-y-2">
                 <Link
-                  href="/dashboard/projects"
+                  href="/dashboard/project"
                   className="block hover:text-gray-300"
                 >
                   <FaNewspaper className="inline-block mr-2" /> All Projects
                 </Link>
                 <Link
-                  href="/dashboard/projects/create"
+                  href="/dashboard/project/create"
                   className="block hover:text-gray-300"
                 >
                   <FaPlus className="inline-block mr-2" /> Create Project
@@ -110,13 +109,13 @@ const Sidebar = () => {
             {isBlogOpen && isOpen && (
               <div className="pl-6 mt-2 space-y-2">
                 <Link
-                  href="/dashboard/blogs"
+                  href="/dashboard/blog"
                   className="block hover:text-gray-300"
                 >
                   <FaNewspaper className="inline-block mr-2" /> All Blogs
                 </Link>
                 <Link
-                  href="/dashboard/blogs/create"
+                  href="/dashboard/blog/create"
                   className="block hover:text-gray-300"
                 >
                   <FaPlus className="inline-block mr-2" /> Create Blog

@@ -34,7 +34,7 @@ export default async function RootLayout({
               enableSystem
               disableTransitionOnChange
             >
-              <div>{children}</div>
+              {children}
               <Toaster />
             </ThemeProvider>
           </div>

@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import { TProject } from "@/types";
-import Image from "next/image";
 
 interface ProjectCardProps {
   project: TProject;
@@ -11,13 +11,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       {/* Scrollable Project Thumbnail */}
       <div className="w-full h-80 overflow-hidden rounded-lg border border-gray-300 dark:border-gray-700 relative">
         <div className="h-full w-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 dark:scrollbar-thumb-gray-600 dark:scrollbar-track-gray-800">
-          <Image
-            src="https://i.ibb.co.com/N4TXggZ/manga-Verse-1.png"
-            alt="Project Screenshot"
+          <img
+            src={project.image}
+            alt={project.title}
             width={800}
             height={400}
-            layout="responsive"
-            unoptimized={true}
+            className="rounded-lg transition-all hover:scale-105 duration-300"
           />
         </div>
       </div>

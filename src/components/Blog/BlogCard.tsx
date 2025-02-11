@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import { IBlog } from "@/types";
-import Image from "next/image";
 
 interface BlogCardProps {
   blog: IBlog;
@@ -10,11 +10,9 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
     <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden p-5 transition-transform transform hover:scale-[1.03] duration-300">
       {/* Blog Thumbnail */}
       <div className="w-full h-52 relative rounded-lg overflow-hidden">
-        <Image
+        <img
           src={blog.thumbnails}
           alt={blog.title}
-          layout="fill"
-          objectFit="cover"
           className="rounded-lg transition-all hover:scale-105 duration-300"
         />
       </div>
