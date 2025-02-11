@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useGetBlogByIdQuery } from "@/redux/features/Blog/blogApi";
 import { IBlog } from "@/types";
@@ -17,13 +17,13 @@ const BlogDetailsCard = ({ id }: { id: string }) => {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-10">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-10">
       {/* Blog Thumbnail */}
-      <div className="w-full h-80 relative rounded-lg overflow-hidden mb-6">
+      <div className="w-full rounded-lg overflow-hidden mb-6">
         <img
           src={blog.thumbnails}
           alt={blog.title}
-          className="w-full h-full object-cover rounded-lg"
+          className="w-full h-auto max-w-full object-cover rounded-lg"
         />
       </div>
 
@@ -41,12 +41,12 @@ const BlogDetailsCard = ({ id }: { id: string }) => {
       <div className="mt-6 flex justify-between items-center">
         <button
           onClick={() => window.history.back()}
-          className="px-5 py-2 text-sm font-semibold bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg hover:bg-gray-400 dark:hover:bg-gray-600 transition duration-300"
+          className="px-5 py-2 text-sm font-semibold bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition duration-300"
         >
           ← Back
         </button>
 
-        <button className="px-5 py-2 text-sm font-semibold bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300 shadow-md">
+        <button className="px-5 py-2 text-sm font-semibold bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300">
           Share
         </button>
       </div>

@@ -19,20 +19,20 @@ const ProjectDetailsCard = ({ id }: { id: string }) => {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-10">
-      {/* Scrollable Full-Height Project Thumbnail */}
-      <div className="w-full h-[500px] overflow-hidden rounded-lg border border-gray-300 dark:border-gray-700 relative">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 mt-14 md:p-10">
+      {/* Full-Height Project Thumbnail */}
+      <div className="w-full h-[80vh] overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 relative">
         <div className="h-full w-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 dark:scrollbar-thumb-gray-600 dark:scrollbar-track-gray-800">
           <img
             src={project.image}
             alt={project.title}
-            className="w-full object-cover rounded-lg"
+            className="w-full h-auto max-w-full object-contain rounded-lg"
           />
         </div>
       </div>
 
       {/* Project Title */}
-      <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mt-6">
+      <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mt-8">
         {project.title}
       </h1>
 
@@ -57,7 +57,7 @@ const ProjectDetailsCard = ({ id }: { id: string }) => {
       <div className="mt-8 flex justify-between items-center">
         <button
           onClick={() => window.history.back()}
-          className="px-5 py-2 text-sm font-semibold bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg hover:bg-gray-400 dark:hover:bg-gray-600 transition duration-300"
+          className="px-5 py-2 text-sm font-semibold bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition duration-300"
         >
           ← Back
         </button>
@@ -67,7 +67,7 @@ const ProjectDetailsCard = ({ id }: { id: string }) => {
             href={project.liveLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-5 py-2 text-sm font-semibold bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300 shadow-md"
+            className="px-5 py-2 text-sm font-semibold bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300"
           >
             Live Preview
           </a>
