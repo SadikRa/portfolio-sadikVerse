@@ -20,7 +20,10 @@ type BlogUpdateFormValues = Partial<IBlog>;
 const BlogUpdateForm = ({ id }: { id: string }) => {
   const router = useRouter();
 
-  const { data: blog, isLoading } = useGetBlogByIdQuery(id as string);
+  // Fetch the blog data
+  const { data: blogResponse, isLoading } = useGetBlogByIdQuery(id);
+  const blog = blogResponse?.data;
+
   const [updateBlog, { isLoading: isUpdating }] = useUpdateBlogMutation();
 
   const {
@@ -38,9 +41,9 @@ const BlogUpdateForm = ({ id }: { id: string }) => {
 
   useEffect(() => {
     if (blog) {
-      setValue("title", blog.title);
-      setValue("thumbnails", blog.thumbnails);
-      setValue("content", blog.content);
+      setValue("title", blog.title || "");
+      setValue("thumbnails", blog.thumbnails || "");
+      setValue("content", blog.content || "");
     }
   }, [blog, setValue]);
 
@@ -53,7 +56,7 @@ const BlogUpdateForm = ({ id }: { id: string }) => {
     try {
       await updateBlog({ id, data }).unwrap();
       toast.success("Blog updated successfully!");
-      router.push("/dashboard/");
+      router.push("/dashboard/blog");
     } catch (error) {
       toast.error("Failed to update blog");
     }

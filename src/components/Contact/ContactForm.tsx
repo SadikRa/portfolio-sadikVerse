@@ -11,14 +11,15 @@ const ContactForm = () => {
 
   const [success, setSuccess] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Simple validation
     if (!formData.name || !formData.email || !formData.message) {
       alert("Please fill out all fields.");
       return;
@@ -29,11 +30,12 @@ const ContactForm = () => {
       return;
     }
 
-    // Save to Local Storage (Temporary)
     const savedMessages = JSON.parse(localStorage.getItem("messages") || "[]");
-    localStorage.setItem("messages", JSON.stringify([...savedMessages, formData]));
+    localStorage.setItem(
+      "messages",
+      JSON.stringify([...savedMessages, formData])
+    );
 
-    // Reset form and show success message
     setFormData({ name: "", email: "", message: "" });
     setSuccess(true);
 
@@ -53,7 +55,6 @@ const ContactForm = () => {
       )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Name Input */}
         <input
           type="text"
           name="name"
@@ -63,7 +64,6 @@ const ContactForm = () => {
           className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg dark:bg-gray-800 dark:text-white"
         />
 
-        {/* Email Input */}
         <input
           type="email"
           name="email"
@@ -73,7 +73,6 @@ const ContactForm = () => {
           className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg dark:bg-gray-800 dark:text-white"
         />
 
-        {/* Message Textarea */}
         <textarea
           name="message"
           value={formData.message}
@@ -83,7 +82,6 @@ const ContactForm = () => {
           className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg dark:bg-gray-800 dark:text-white"
         />
 
-        {/* Submit Button */}
         <button
           type="submit"
           className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"

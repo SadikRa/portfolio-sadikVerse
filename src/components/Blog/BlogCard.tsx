@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { IBlog } from "@/types";
+import Link from "next/link";
 
 interface BlogCardProps {
   blog: IBlog;
@@ -30,9 +31,11 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
       </p>
 
       {/* Read More Button */}
-      <button className="mt-4 px-5 py-2 text-sm font-semibold bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300 shadow-md">
-        Read More
-      </button>
+      <Link href={`/blogs/${blog._id}`}>
+        <button className="mt-4 px-5 py-2 text-sm font-semibold bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300 shadow-md">
+          Read More
+        </button>
+      </Link>
     </div>
   );
 };

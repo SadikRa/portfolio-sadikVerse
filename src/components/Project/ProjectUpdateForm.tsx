@@ -3,7 +3,7 @@
 
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import {
   useGetProjectByIdQuery,
   useUpdateProjectMutation,
@@ -20,30 +20,30 @@ type ProjectUpdateFormValues = Partial<TProject>;
 const ProjectUpdateForm = ({ id }: { id: string }) => {
   const router = useRouter();
 
-  const { data: project, isLoading } = useGetProjectByIdQuery(id as string);
+  // Fetch project data
+  const { data: projectResponse, isLoading } = useGetProjectByIdQuery(id);
+  const project = projectResponse?.data;
+
   const [updateProject, { isLoading: isUpdating }] = useUpdateProjectMutation();
 
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm<ProjectUpdateFormValues>({
-    defaultValues: {
-      title: "",
-      description: "",
-      image: "",
-      liveLink: "",
-      technologies: [],
-    },
-  });
+  const { register, handleSubmit, setValue } = useForm<ProjectUpdateFormValues>(
+    {
+      defaultValues: {
+        title: "",
+        description: "",
+        image: "",
+        liveLink: "",
+        technologies: [],
+      },
+    }
+  );
 
   useEffect(() => {
     if (project) {
-      setValue("title", project.title);
-      setValue("description", project.description);
-      setValue("image", project.image);
-      setValue("liveLink", project.liveLink);
+      setValue("title", project.title || "");
+      setValue("description", project.description || "");
+      setValue("image", project.image || "");
+      setValue("liveLink", project.liveLink || "");
       setValue("technologies", project.technologies || []);
     }
   }, [project, setValue]);
@@ -57,7 +57,7 @@ const ProjectUpdateForm = ({ id }: { id: string }) => {
     try {
       await updateProject({ id, data }).unwrap();
       toast.success("Project updated successfully!");
-      router.push("/dashboard/");
+      router.push("/dashboard/project");
     } catch (error) {
       toast.error("Failed to update project");
     }
@@ -70,7 +70,7 @@ const ProjectUpdateForm = ({ id }: { id: string }) => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg transition-all duration-300">
+    <div className="max-w-2xl mx-auto p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold text-[#2563EB] dark:text-[#3B82F6] text-center mb-6">
         Update Project
       </h2>
