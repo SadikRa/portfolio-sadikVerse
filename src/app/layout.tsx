@@ -26,19 +26,19 @@ export default async function RootLayout({
   return (
     <Providers>
       <html lang="en">
-        <body className={roboto.className}>
-          <div className="max-w-7xl mx-auto">
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <body className={roboto.className}>
+            <div className="max-w-7xl mx-auto">
               {children}
               <Toaster />
-            </ThemeProvider>
-          </div>
-        </body>
+            </div>
+          </body>
+        </ThemeProvider>
       </html>
     </Providers>
   );

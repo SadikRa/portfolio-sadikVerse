@@ -81,7 +81,7 @@ const BlogTable = () => {
                 {/* Actions */}
                 <td className="p-3 flex space-x-3">
                   {/* Update Button */}
-                  <Link href={`/dashboard/blogs/update/${blog._id}`}>
+                  <Link href={`/dashboard/blog/update`}>
                     <button className="text-blue-500 hover:text-blue-600 transition">
                       <FaEdit size={18} />
                     </button>

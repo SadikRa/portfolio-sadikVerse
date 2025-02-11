@@ -50,7 +50,7 @@ const Banner = () => {
 
         <a href="https://drive.google.com/file/d/1rdVEQ8hhTBO-ilutDYLVDMLknMFHVdSn/view?usp=sharing">
           <Button
-            className="mt-6 px-6 py-3 text-lg font-semibold bg-primary
+            className="mt-6 px-6 py-5 text-lg font-semibold bg-primary
             text-primary-foreground hover:bg-primary/90 rounded-lg
             transition-transform transform hover:scale-105"
           >
