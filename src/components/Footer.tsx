@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/no-html-link-for-pages */
-import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -49,7 +49,7 @@ const Footer = () => {
         {/* Right Side: Social Icons */}
         <div className="flex justify-center gap-2 mt-6 md:mt-0">
           <a
-            href="https://github.com/sadikverse"
+            href="https://github.com/SadikRa"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Profile"
@@ -58,7 +58,7 @@ const Footer = () => {
             <FaGithub className="text-black dark:text-white text-2xl md:text-3xl" />
           </a>
           <a
-            href="https://linkedin.com/in/sadikverse"
+            href="https://www.linkedin.com/in/sadik-rahman-a6b83326a/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
@@ -67,7 +67,7 @@ const Footer = () => {
             <FaLinkedin className="text-black dark:text-white text-2xl md:text-3xl" />
           </a>
           <a
-            href="https://facebook.com/"
+            href="https://www.facebook.com/SadikRahman11"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook Profile"
@@ -75,15 +75,7 @@ const Footer = () => {
           >
             <FaFacebook className="text-black dark:text-white text-2xl md:text-3xl" />
           </a>
-          <a
-            href="https://instagram.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram Profile"
-            className="hover:text-[#E4405F] transition-colors duration-300"
-          >
-            <FaInstagram className="text-black dark:text-white text-2xl md:text-3xl" />
-          </a>
+          
         </div>
       </div>
 
