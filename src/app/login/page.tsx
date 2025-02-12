@@ -157,7 +157,7 @@ const LoginPage = () => {
                 className="w-12 h-12 p-0 rounded-full"
                 onClick={() =>
                   signIn("github", {
-                    callbackUrl: "http://localhost:3000",
+                    callbackUrl: "https://sadikverse.vercel.app",
                   })
                 }
               >
@@ -170,7 +170,7 @@ const LoginPage = () => {
                 className="w-12 h-12 p-0 rounded-full"
                 onClick={() =>
                   signIn("google", {
-                    callbackUrl: "http://localhost:3000",
+                    callbackUrl: "https://sadikverse.vercel.app",
                   })
                 }
               >
