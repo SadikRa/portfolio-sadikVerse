@@ -35,3 +35,28 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 "# portfolio-sadikVerse" 
+
+
+Route (app)                              Size     First Load JS
+┌ ƒ /                                    41.9 kB         192 kB
+├ ○ /_not-found                          154 B           106 kB
+├ ƒ /api/auth/[...nextauth]              154 B           106 kB
+├ ƒ /blogs                               1.73 kB         133 kB
+├ ƒ /blogs/[blogId]                      1.58 kB         129 kB
+├ ƒ /contact                             875 B           106 kB
+├ ƒ /dashboard                           176 B           111 kB
+├ ○ /dashboard/blog                      2.75 kB         139 kB
+├ ƒ /dashboard/blog/[blogId]             2.73 kB         156 kB
+├ ○ /dashboard/blog/create               2.59 kB         156 kB
+├ ○ /dashboard/project                   2.78 kB         139 kB
+├ ƒ /dashboard/project/[projectId]       2.83 kB         157 kB
+├ ○ /dashboard/project/create            10.3 kB         182 kB
+├ ○ /login                               5.28 kB         204 kB
+├ ƒ /project                             1.98 kB         134 kB
+├ ƒ /project/[projectId]                 1.8 kB          130 kB
+└ ○ /register                            3.9 kB          188 kB
++ First Load JS shared by all            105 kB
+  ├ chunks/4bd1b696-5e53300bd9539d94.js  53 kB
+  ├ chunks/517-348891d2eb056c22.js       50.4 kB
+  └ other shared chunks (total)          1.97 kB
+

@@ -1,10 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { useState, useEffect } from "react";
-import profileImage from "../../../../public/profile.jpg";
 import { Button } from "@/components/ui/button";
 
 const words = ["Full Stack Developer", "React & Next.js Expert", "MERN Stack"];
@@ -65,8 +64,8 @@ const Banner = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="mt-8 md:mt-0 md:ml-12 lg:ml-16"
       >
-        <Image
-          src={profileImage}
+        <img
+          src="https://i.ibb.co.com/chBVQ2wQ/profile.jpg"
           alt="Profile Picture"
           width={300}
           height={300}

@@ -1,8 +1,11 @@
 import ProjectUpdateForm from "@/components/Project/ProjectUpdateForm";
 
-const UpdateProject = ({ params }: { params: { projectId: string } }) => {
-  const { projectId } = params;
-
+const UpdateProject = async ({
+  params,
+}: {
+  params: Promise<{ projectId: string }>;
+}) => {
+  const { projectId } = await params;
 
   return (
     <div>

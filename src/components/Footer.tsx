@@ -1,21 +1,19 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/no-html-link-for-pages */
-import Image from "next/image";
-import logoImage from "../../public/logo.png";
 import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300">
+    <footer className=" bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300">
       <div className="max-w-7xl mx-auto px-6 py-10 md:flex md:items-center md:justify-between">
         {/* Left Side: Logo & Name */}
         <div className="flex items-center justify-center space-x-3 md:justify-start">
-          <Image
-            src={logoImage}
+          <img
+            src="https://i.ibb.co.com/KjmMjyGx/logo.webp"
             alt="SadikVerse Logo"
             width={80}
             height={80}
             className="shadow-lg border-4 border-gray-200 dark:border-gray-700 rounded-full"
-            priority
           />
           <span className="text-2xl font-bold text-[#2563EB] dark:text-[#3B82F6]">
             SadikVerse

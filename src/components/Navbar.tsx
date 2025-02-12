@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Link from "next/link";
@@ -33,12 +33,23 @@ const Navbar = ({ session }: { session: UserProps | null }) => {
     <nav className="fixed top-0 left-0 w-full bg-background/80 backdrop-blur-md border-b border-border shadow-md z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
         {/* Logo */}
-        <Link
-          href="/"
-          className="text-2xl sm:text-3xl font-extrabold text-primary"
-        >
-          SadikVerse
-        </Link>
+        <div className="flex items-center gap-1">
+          <div>
+            <img
+              src="https://i.ibb.co.com/KjmMjyGx/logo.webp"
+              alt="SadikVerse Logo"
+              width={45}
+              height={45}
+              className="shadow-lg border-4 border-gray-200 dark:border-gray-700 rounded-full"
+            />
+          </div>
+          <Link
+            href="/"
+            className="text-2xl sm:text-3xl font-extrabold text-primary"
+          >
+            SadikVerse
+          </Link>
+        </div>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6 text-foreground font-medium">

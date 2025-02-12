@@ -126,6 +126,7 @@ const LoginPage = () => {
 
             {/* Submit Button */}
             <Button
+              disabled
               type="submit"
               className="w-full bg-primary hover:bg-primary/90"
             >

@@ -1,9 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useGetBlogByIdQuery } from "@/redux/features/Blog/blogApi";
 import { IBlog } from "@/types";
 
-/* eslint-disable @next/next/no-img-element */
 const BlogDetailsCard = ({ id }: { id: string }) => {
   const { data: blogResponse, isLoading } = useGetBlogByIdQuery(id);
   const blog: IBlog | undefined = blogResponse?.data;

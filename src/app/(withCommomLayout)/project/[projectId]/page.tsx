@@ -1,8 +1,12 @@
 import ProjectDetailsCard from "@/components/Project/ProjectDetailsCard";
 import React from "react";
 
-const ProjectDetailsPage = ({ params }: { params: { projectId: string } }) => {
-  const { projectId } = params;
+const ProjectDetailsPage = async ({
+  params,
+}: {
+  params: Promise<{ projectId: string }>;
+}) => {
+  const { projectId } = await params;
 
   return (
     <div className="min-h-screen py-10 px-4 md:px-10 bg-gray-50 dark:bg-gray-900">
