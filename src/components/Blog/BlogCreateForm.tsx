@@ -6,27 +6,41 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useCreateBlogMutation } from "@/redux/features/Blog/blogApi";
-import { IBlog } from "@/types";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+
+interface BlogFormData {
+  title: string;
+  thumbnails: string;
+  content: string;
+}
 
 const BlogCreateForm = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
-  } = useForm<IBlog>();
+  } = useForm<BlogFormData>();
+  const router = useRouter();
 
   const [createBlog, { isLoading }] = useCreateBlogMutation();
 
-  const onSubmit: SubmitHandler<IBlog> = async (data) => {
+  const onSubmit: SubmitHandler<BlogFormData> = async (data) => {
     try {
       await createBlog(data).unwrap();
       toast.success("Blog created successfully!");
+      router.push("/dashboard/blog");
     } catch (error) {
       toast.error("Failed to create blog.");
       console.error(error);
     }
   };
+
+  // Watch the input values to check conditions
+  const title = watch("title", "");
+  const content = watch("content", "");
+  const isButtonDisabled = title.length < 5 || content.length < 20;
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg transition-all duration-300">
@@ -86,7 +100,12 @@ const BlogCreateForm = () => {
         {/* Submit Button */}
         <Button
           type="submit"
-          className="w-full bg-[#2563EB] hover:bg-[#3B82F6] dark:bg-[#3B82F6] dark:hover:bg-[#2563EB] transition-all"
+          disabled={isButtonDisabled || isLoading}
+          className={`w-full transition-all ${
+            isButtonDisabled
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-[#2563EB] hover:bg-[#3B82F6] dark:bg-[#3B82F6] dark:hover:bg-[#2563EB]"
+          }`}
         >
           {isLoading ? "Creating..." : "Create Blog"}
         </Button>

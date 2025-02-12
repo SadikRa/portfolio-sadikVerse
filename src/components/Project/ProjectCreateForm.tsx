@@ -14,6 +14,7 @@ import {
 import { useCreateProjectMutation } from "@/redux/features/Project/projectApi";
 import { TProject } from "@/types";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const ProjectCreateForm = () => {
   const {
@@ -22,6 +23,7 @@ const ProjectCreateForm = () => {
     formState: { errors },
     setValue,
   } = useForm<TProject>();
+  const router = useRouter();
 
   const [createProject, { isLoading }] = useCreateProjectMutation();
 
@@ -31,6 +33,7 @@ const ProjectCreateForm = () => {
     try {
       await createProject(projectData).unwrap();
       toast.success("Project created successfully!");
+      router.push("/dashboard/project");
     } catch (error) {
       toast.error("Failed to create project.");
       console.error(error);

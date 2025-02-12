@@ -170,7 +170,7 @@ const LoginPage = () => {
                 className="w-12 h-12 p-0 rounded-full"
                 onClick={() =>
                   signIn("google", {
-                    callbackUrl: "https://sadikverse.vercel.app/api/auth/callback/google",
+                    callbackUrl: "https://sadikverse.vercel.app",
                   })
                 }
               >
