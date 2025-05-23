@@ -29,47 +29,122 @@ import {
 } from "react-icons/si";
 
 const skills = [
-  { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
-  { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
-  { name: "JavaScript", icon: <SiJavascript className="text-yellow-400" /> },
-  { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
-  { name: "React.js", icon: <FaReact className="text-cyan-400" /> },
+  {
+    name: "HTML",
+    icon: <FaHtml5 className="text-orange-500" />,
+    website: "https://developer.mozilla.org/en-US/docs/Web/HTML",
+  },
+  {
+    name: "CSS",
+    icon: <FaCss3Alt className="text-blue-500" />,
+    website: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+  },
+  {
+    name: "JavaScript",
+    icon: <SiJavascript className="text-yellow-400" />,
+    website: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+  },
+  {
+    name: "TypeScript",
+    icon: <SiTypescript className="text-blue-600" />,
+    website: "https://www.typescriptlang.org/",
+  },
+  {
+    name: "React.js",
+    icon: <FaReact className="text-cyan-400" />,
+    website: "https://react.dev/",
+  },
   {
     name: "Next.js",
     icon: <SiNextdotjs className="text-black dark:text-white" />,
+    website: "https://nextjs.org/",
   },
-  { name: "Vite", icon: <SiVite className="text-purple-500" /> },
-  { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400" /> },
-  { name: "Bootstrap", icon: <SiBootstrap className="text-indigo-500" /> },
-  { name: "Ant Design", icon: <SiAntdesign className="text-red-500" /> },
-  { name: "Shadcn/ui", icon: <SiShadcnui className="text-blue-500" /> },
-  { name: "Node.js", icon: <FaNodeJs className="text-green-500" /> },
+  {
+    name: "Vite",
+    icon: <SiVite className="text-purple-500" />,
+    website: "https://vitejs.dev/",
+  },
+  {
+    name: "Tailwind CSS",
+    icon: <SiTailwindcss className="text-teal-400" />,
+    website: "https://tailwindcss.com/",
+  },
+  {
+    name: "Bootstrap",
+    icon: <SiBootstrap className="text-indigo-500" />,
+    website: "https://getbootstrap.com/",
+  },
+  {
+    name: "Ant Design",
+    icon: <SiAntdesign className="text-red-500" />,
+    website: "https://ant.design/",
+  },
+  {
+    name: "Shadcn/ui",
+    icon: <SiShadcnui className="text-blue-500" />,
+    website: "https://ui.shadcn.com/",
+  },
+  {
+    name: "Node.js",
+    icon: <FaNodeJs className="text-green-500" />,
+    website: "https://nodejs.org/",
+  },
   {
     name: "Express.js",
     icon: <SiExpress className="text-gray-700 dark:text-white" />,
+    website: "https://expressjs.com/",
   },
-  { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
-  { name: "Mongoose", icon: <SiMongoose className="text-red-500" /> },
-  { name: "Git", icon: <FaGitAlt className="text-orange-600" /> },
-  { name: "GitHub", icon: <FaGithub className="text-black dark:text-white" /> },
-  { name: "ESLint", icon: <SiEslint className="text-purple-500" /> },
-  { name: "SQL", icon: <SiMysql className="text-blue-600" /> },
-  { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-800" /> },
+  {
+    name: "MongoDB",
+    icon: <SiMongodb className="text-green-500" />,
+    website: "https://www.mongodb.com/",
+  },
+  {
+    name: "Mongoose",
+    icon: <SiMongoose className="text-red-500" />,
+    website: "https://mongoosejs.com/",
+  },
+  {
+    name: "Git",
+    icon: <FaGitAlt className="text-orange-600" />,
+    website: "https://git-scm.com/",
+  },
+  {
+    name: "GitHub",
+    icon: <FaGithub className="text-black dark:text-white" />,
+    website: "https://github.com/",
+  },
+  {
+    name: "ESLint",
+    icon: <SiEslint className="text-purple-500" />,
+    website: "https://eslint.org/",
+  },
+  {
+    name: "SQL",
+    icon: <SiMysql className="text-blue-600" />,
+    website: "https://www.mysql.com/",
+  },
+  {
+    name: "PostgreSQL",
+    icon: <SiPostgresql className="text-blue-800" />,
+    website: "https://www.postgresql.org/",
+  },
   {
     name: "Prisma",
     icon: <SiPrisma className="text-gray-900 dark:text-white" />,
+    website: "https://www.prisma.io/",
   },
 ];
 
 const SkillShowCase = () => {
   return (
-    <div className="w-full max-w-5xl mx-auto p-6">
+    <div className="w-full mx-auto py-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Card className="shadow-xl bg-white dark:bg-gray-800 border dark:border-gray-700">
+        <Card className=" border-none rounded-none shadow-none ">
           <CardHeader>
             <CardTitle className="text-3xl font-bold text-center text-gray-800 dark:text-white">
               My Skills
@@ -78,8 +153,11 @@ const SkillShowCase = () => {
           <CardContent>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {skills.map((skill, index) => (
-                <motion.div
+                <motion.a
                   key={index}
+                  href={skill.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -90,7 +168,7 @@ const SkillShowCase = () => {
                       {skill.name}
                     </span>
                   </div>
-                </motion.div>
+                </motion.a>
               ))}
             </div>
           </CardContent>
