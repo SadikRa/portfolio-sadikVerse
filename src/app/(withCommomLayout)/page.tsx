@@ -11,7 +11,7 @@ const HomePage = async () => {
       <div>
         <Banner />
       </div>
-      <div>
+      <div className="mt-4">
         <SkillShowCase />
       </div>
       <div className="my-24">
