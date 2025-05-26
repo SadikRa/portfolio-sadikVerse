@@ -1,3 +1,5 @@
+"use client";
+
 /* eslint-disable @next/next/no-img-element */
 import { TProject } from "@/types";
 import Link from "next/link";
