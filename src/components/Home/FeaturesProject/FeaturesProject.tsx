@@ -14,6 +14,7 @@ const FeaturesProject = () => {
       <p className="text-center text-lg text-red-500">
         Error fetching Projects
       </p>
+      
     );
 
   return (
